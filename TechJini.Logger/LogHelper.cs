@@ -1,0 +1,68 @@
+﻿/*
+ * Copyright 2016 Jatin Kumar, TechJini Solutions Private Limited
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace TechJini.Logger
+{
+    public static class LogHelper
+
+    {
+
+        private static LogBase logger = null;
+
+        public static void Log(LogTarget target, string message)
+
+        {
+
+            switch (target)
+
+            {
+
+                case LogTarget.File:
+
+                    logger = new FileLogger();
+
+                    logger.Log(message);
+
+                    break;
+
+                case LogTarget.Database:
+
+                    //logger = new DBLogger();
+
+                    logger.Log(message);
+
+                    break;
+
+
+                case LogTarget.EventLog:
+
+                    //logger = new EventLogger();
+
+                    logger.Log(message);
+
+                    break;
+
+                default:
+
+                    return;
+
+            }
+
+        }
+
+    }
+
+}
